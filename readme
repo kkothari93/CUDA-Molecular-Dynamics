@@ -1,0 +1,49 @@
+CUDA ACCELERATED MOLECULAR DYNAMICS
+
+Please run the final version of the code MD_kernel_v8.cu to test all the results. The program models 12,6 Lennard-Jones potential to simulate noble gases at various temperatures. All units in these simulations are in reduced units. To get actual temperature and length values multiply by appropriate constants for each noble gas.
+
+The program gives out the potential energy every 1000 time steps. The total number of time steps can be changed by changing the NUM_STEPS variable. One may alsochoose to simulate a higher number of atoms. To do so, the lenth 'L' of the lattice has to be changed. L scales as cube root of N. For eg. L for 64 atoms is 4.2323167f, then for 125 atoms it would be 4.2323167*5/4 = 5.2904f.
+
+User may also need to change the time-step in case the solution does not converge. The scheme emplioyed would decide the time step. Implicit schemes would allow for a much larger time step as compared to an explicit scheme. Implicit scheme can be chosen by assigning 1 for scheme.
+
+LIBRARIES AND HEADER FILES REQUIRED
+
+nvcc <file_name here> -gencode=arch=compute_20,code=\"sm_20,compute_20\
+-G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd "
+
+/////////////////////////////////////////
+//  .lib files
+/////////////////////////////////////////
+cudart.lib
+kernel32.lib
+user32.lib
+gdi32.lib
+winspool.lib
+kernel32.lib
+user32.lib
+gdi32.lib
+winspool.lib
+comdlg32.lib
+advapi32.lib
+shell32.lib
+ole32.lib
+oleaut32.lib
+uuid.lib
+odbc32.lib
+odbccp32.lib
+
+/////////////////////////////////////////
+// Header files
+/////////////////////////////////////////
+
+#include <ctime>
+#include "cuda_runtime.h"
+#include "math.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <device_launch_parameters.h>
+#include <device_functions.h>
+#include <curand.h>
+#include <curand_kernel.h>
+#include <time.h>
+#include <string.h>

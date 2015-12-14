@@ -14,10 +14,10 @@
 
 // Parameters
 
-#define N_ATOMS 400
+#define N_ATOMS 343
 #define MASS_ATOM 1.0f
 #define time_step 0.01f
-#define L 8.0f
+#define L 10.5f
 #define T 0.728f
 #define NUM_STEPS 10000
 
