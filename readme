@@ -1,5 +1,7 @@
 CUDA ACCELERATED MOLECULAR DYNAMICS
 
+By Konik Kothari & Nitin Srivastava
+
 Please run the final version of the code MD_kernel_v8.cu to test all the results. The program models 12,6 Lennard-Jones potential to simulate noble gases at various temperatures. All units in these simulations are in reduced units. To get actual temperature and length values multiply by appropriate constants for each noble gas.
 
 The program gives out the potential energy every 1000 time steps. The total number of time steps can be changed by changing the NUM_STEPS variable. One may alsochoose to simulate a higher number of atoms. To do so, the lenth 'L' of the lattice has to be changed. L scales as cube root of N. For eg. L for 64 atoms is 4.2323167f, then for 125 atoms it would be 4.2323167*5/4 = 5.2904f.
